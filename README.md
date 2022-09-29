@@ -23,3 +23,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+NOTE:
+
+card.date REDEFINE TO STRING, TAKE TIME.NOW.YEAR + 4 Assign it to it
