@@ -28,7 +28,7 @@
 
   <div>
     <%= form.label :sexe, style: "display: block" %>
-    <%= form.number_field :sexe %>
+    <%= form.select :sexe, [["Select", ""],["Man", "man"], ["Woman", "woman"]] %>
   </div>
 
   <div>

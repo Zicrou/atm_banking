@@ -13,6 +13,7 @@ class AccountsController < ApplicationController
   # GET /accounts/new
   def new
     @account = Account.new
+    #@sexe = {[id: 0, name: "man"], [id: 1, name: "woman"]}
   end
 
   # GET /accounts/1/edit
