@@ -4,10 +4,10 @@ one:
   card_number: MyString
   expiration_date: 2022-09-29
   card_type: 1
-  amount: 1
+  amount: 
 
 two:
   card_number: MyString
   expiration_date: 2022-09-29
   card_type: 1
-  amount: 1
+  amount: 

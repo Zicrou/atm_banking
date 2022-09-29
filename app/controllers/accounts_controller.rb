@@ -60,7 +60,18 @@ class AccountsController < ApplicationController
 
   def generate_bank_card
     @generate_user_bank_card = params[:bank_card_for_user].to_i
-    #debugger
+    @card = Card.new
+    @card.expiration_date = Time.now + 4
+    @card.card_number = 1234567809
+    @card.card_type = "debit"
+    @card.amount = 1234567890987654
+    if @card.save
+      puts "Success"
+    else
+      puts"faild"
+    end
+
+    debugger
     redirect_to root_path()
   end
 
