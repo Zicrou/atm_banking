@@ -58,6 +58,12 @@ class AccountsController < ApplicationController
     end
   end
 
+  def generate_bank_card
+    @generate_user_bank_card = params[:bank_card_for_user].to_i
+    #debugger
+    redirect_to root_path()
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account
@@ -66,6 +72,6 @@ class AccountsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:name, :phone_number, :date_of_birth, :sexe, :profession, :address)
+      params.require(:account).permit(:name, :phone_number, :date_of_birth, :sexe, :profession, :address, :bank_card_for_user)
     end
 end
