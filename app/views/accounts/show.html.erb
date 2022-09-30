@@ -1,16 +1,56 @@
 <p style="color: green"><%= notice %></p>
 <%#= form_with(model: Account, url: generate_bank_card_account_path(account_id: @account)) do |form| %>
-<%= form_with(model: Card, url: card_save_path(account_id: @account)) do |form| %>
-  <%= form.submit "Generated A Bank Card", class:"btn btn-primary" %>
-<% end %>
+
+<div class="container">
+  <div class="row">
+    <div style="width:35%;border-right:1px solid black;">
+      <%= render @account %>
+
+      <div>
+        <%= link_to "Edit this account", edit_account_path(@account) %> |
+        <%= link_to "Back to accounts", accounts_path %> 
 
 
-<%= render @account %>
+        <%= button_to "Destroy this account", @account, method: :delete, class:"btn btn-danger" %>
+      </div>
+      **********************
+    </div>
 
-<div>
-  <%= link_to "Edit this account", edit_account_path(@account) %> |
-  <%= link_to "Back to accounts", accounts_path %> 
+    <div class="container" style="width:55%;">
+      <%= form_with(model: Card, url: card_save_path(account_id: @account)) do |form| %>
+        <%= form.submit "Generated A Bank Card", class:"btn btn-primary" %>
+      <% end %>
 
+      <!-- /////// DISPLAY CARD VIEW -->
+      <% if @account.card.nil? %>
+        <div class="" style="display: flex;align-items: center;justify-content: center;border: 1px solid grey;width:55%;height: 35%;border-radius: 5%;margin-left:5%;margin-top: 5%;">
+          <div class="" style="text-align: center;">No Card</div>
+        </div>
+      <% else %>
+      <div><%= @card.card_number %></div>
+        <div class="" style="display: flex;align-items: center;justify-content: center;border: 1px solid grey;width:55%;height: 35%;border-radius: 5%;margin-left:5%;margin-top: 5%;">
+          <div class="" style="text-align: center;">Amount:<%= @card.amount %>
+          <p>Card Number: <%= @card.card_number %></p></div>
+        </div>
+        <p>Current Amount : <%= @account.card.amount %></p>
+        <% end %>
+        <br>
+        <!-- /////// END DISPLAY CARD VIEW -->
+        
+      <!-- /////// DISPLAY UPDATE AMOUNT FORM -->
+      <%= form_with(model: Card, url: card_update_amount_path(account_id: @account)) do |form| %>
+        <div class="form-group col-md-4">
+          <%= form.label :amount, style: "display: block" %>
+          <%= form.text_field :amount, class:"form-control" %>
+        </div>  
+        <br>
+        <div class="form-group col-md-4">
+          <%= form.submit "Validate", class:"btn btn-warning form-control" %>
+        </div>
+      <% end %>
 
-  <%= button_to "Destroy this account", @account, method: :delete %>
+      <!-- /////// END DISPLAY UPDATE AMOUNT FORM -->
+    </div>
+  </div>
 </div>
+<hr>

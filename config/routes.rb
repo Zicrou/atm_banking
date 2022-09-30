@@ -1,5 +1,6 @@
 Rails.application.routes.draw do 
   post "card/save"
+  post "card/update_amount"
   resources :accounts do
     member do
       post "generate_bank_card"

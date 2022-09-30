@@ -8,6 +8,8 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1 or /accounts/1.json
   def show
+    @card = Card.find_by(account_id: @account)
+    #debugger
   end
 
   # GET /accounts/new
