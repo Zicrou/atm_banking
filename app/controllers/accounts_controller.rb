@@ -59,20 +59,35 @@ class AccountsController < ApplicationController
   end
 
   def generate_bank_card
-    @generate_user_bank_card = params[:bank_card_for_user].to_i
+    @account = params[:account_id].to_i
     @card = Card.new
-    @card.expiration_date = Time.now + 4
-    @card.card_number = 1234567809
+    @card.account_id = @account
+    @card.expiration_date = Time.now + 4.year
+    @card.card_number = SecureRandom.alphanumeric(8)
     @card.card_type = "debit"
     @card.amount = 1234567890987654
-    if @card.save
-      puts "Success"
+    
+    
+    if current_user.account.card.nil?
+      puts "NO CARD"
+      respond_to do |format|
+        if @card.save
+          puts "Success"
+          format.html { redirect_to account_url(@account), notice: "Card was successfully Generated." }
+          format.json { render :show, status: :created, location: @account }
+        else
+          puts "Failed"
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @account.errors, status: :unprocessable_entity }
+        end
+      end
     else
-      puts"faild"
+        puts "HAVE CARD"
     end
+    
 
     debugger
-    redirect_to root_path()
+    #redirect_to root_path()
   end
 
   private
@@ -83,6 +98,6 @@ class AccountsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:name, :phone_number, :date_of_birth, :sexe, :profession, :address, :bank_card_for_user)
+      params.require(:account).permit(:name, :phone_number, :date_of_birth, :sexe, :profession, :address)
     end
 end

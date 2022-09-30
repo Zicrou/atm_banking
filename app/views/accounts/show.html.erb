@@ -1,5 +1,6 @@
 <p style="color: green"><%= notice %></p>
-<%= form_with(model: Account, url: generate_bank_card_account_path(bank_card_for_user: @account)) do |form| %>
+<%#= form_with(model: Account, url: generate_bank_card_account_path(account_id: @account)) do |form| %>
+<%= form_with(model: Card, url: card_save_path(account_id: @account)) do |form| %>
   <%= form.submit "Generated A Bank Card", class:"btn btn-primary" %>
 <% end %>
 
