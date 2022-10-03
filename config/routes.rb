@@ -1,7 +1,14 @@
 Rails.application.routes.draw do 
   get "transaction/balance"
+  post "transaction/balance"
+  
   get "transaction/deposit"
+  post "transaction/deposit"
+  
   get "transaction/withdraw"
+  post "transaction/withdraw"
+  
+  
   resources :atms do
     collection do
       post "balance"

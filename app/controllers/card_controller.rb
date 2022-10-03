@@ -1,4 +1,5 @@
 class CardController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_account, only: %i[update_amount]
   
   def save
