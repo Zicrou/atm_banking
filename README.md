@@ -23,3 +23,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Atm will have user_id account_id transaction_type_id amount

@@ -5,7 +5,19 @@
 
   <h1>
     <%= link_to "Check Accounts", accounts_path() %>
-  </h1>                   
+  </h1>     
+  
+  <h1>
+    <%= link_to "Check Balance", transaction_balance_path() %>
+  </h1>     
+
+  <h1>
+    <%= link_to "Deposit", transaction_deposit_path() %>
+  </h1>    
+
+  <h1>
+    <%= link_to "Withdraw", transaction_withdraw_path() %>
+  </h1>     
 <% else %>
 <h1>
   <%= link_to "Sign In", user_session_path %>
