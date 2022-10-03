@@ -41,7 +41,7 @@
       <%= form_with(model: Card, url: card_update_amount_path(account_id: @account)) do |form| %>
         <div class="form-group col-md-4">
           <%= form.label :amount, style: "display: block" %>
-          <%= form.text_field :amount, class:"form-control" %>
+          <%= form.text_field :amount, class:"form-control", required: true %>
         </div>  
         <br>
         <div class="form-group col-md-4">
@@ -53,4 +53,5 @@
     </div>
   </div>
 </div>
+  <br>
 <hr>
