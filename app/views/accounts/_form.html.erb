@@ -28,12 +28,17 @@
 
   <div>
     <%= form.label :sexe, style: "display: block" %>
-    <%= form.number_field :sexe %>
+    <%= form.select :sexe, [["Select", ""],["Male", "male"], ["Female", "female"]] %>
   </div>
 
   <div>
     <%= form.label :profession, style: "display: block" %>
     <%= form.text_field :profession %>
+  </div>
+
+  <div>
+    <%= form.label :address, style: "display: block" %>
+    <%= form.text_field :address %>
   </div>
 
   <div>

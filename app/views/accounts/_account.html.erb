@@ -1,5 +1,9 @@
 <div id="<%= dom_id account %>">
   <p>
+    <strong>Current User:</strong>
+    <%= current_user.id  %> " | |" <%= current_user.email  %>
+  </p>
+  <p>
     <strong>Name:</strong>
     <%= account.name %>
   </p>
@@ -24,4 +28,13 @@
     <%= account.profession %>
   </p>
 
+  <p>
+    <strong>Address:</strong>
+    <%= account.address %>
+  </p>
+
+  <p>
+    <strong>User Owner:</strong>
+    <%= account.user_id %>
+  </p>
 </div>
