@@ -1,0 +1,30 @@
+.box{
+  display: flex;
+  justify-content: space-between;
+
+  margin: 5%;
+  padding: 1%;
+}
+
+.balance{
+  font-size: 3vw;
+  padding: 5%;
+  width: 25%;
+  border: 4px solid bisque;
+  border-radius: 10%;
+}
+
+.deposit{
+  align-self: flex-end;
+  padding: 3%;
+  width: 25%;
+}
+
+.withdraw{
+  padding: 5%;
+  width: 25%;
+}
+
+.balance:hover{
+  background-color: green;
+}
