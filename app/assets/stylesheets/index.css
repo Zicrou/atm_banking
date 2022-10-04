@@ -12,19 +12,66 @@
   width: 25%;
   border: 4px solid bisque;
   border-radius: 10%;
+  background-color:  rgb(52, 243, 52);
 }
 
 .deposit{
+  font-size: 3vw;
   align-self: flex-end;
   padding: 3%;
   width: 25%;
+  border: 4px solid bisque;
+  border-radius: 10%;
+  background-color: rgb(11, 220, 248);
 }
 
 .withdraw{
+  font-size: 3vw;
   padding: 5%;
   width: 25%;
+  border: 4px solid bisque;
+  border-radius: 10%;
+  background-color: rgb(255, 95, 95);
 }
 
 .balance:hover{
-  background-color: green;
+  background-color: rgb(151, 151, 151);
+  color: white;
 }
+
+.deposit:hover{
+  background-color: rgb(151, 151, 151);
+  color: white;
+}
+
+.withdraw:hover{
+  background-color: rgb(151, 151, 151);
+  color: white;
+}
+
+.big-box{
+  background-color: #D6D6D6;
+}
+/*************************************/
+/*** CSS FOR HEADER ***/
+/*************************************/
+.form-control-dark {
+  border-color: var(--bs-gray);
+}
+.form-control-dark:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+
+.text-small {
+  font-size: 85%;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+
+/*************************************/
+/*** CSS FOR HEADER ***/
+/*************************************/
