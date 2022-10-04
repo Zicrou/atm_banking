@@ -27,7 +27,7 @@ class TransactionController < ApplicationController
         account = @user.account
         total_amoun = account.card.amount - amount
         Card.where(account_id: account.id).update!(amount: total_amoun)
-        redirect_to transaction_deposit_path(), notice: "Deposit Successful!" 
+        redirect_to transaction_deposit_path(), notice: "Withdraw Successful!" 
       end
     end
   end

@@ -7,9 +7,14 @@
     <%= link_to "Check Accounts", accounts_path() %>
   </h1>     
   
+  <!-- Button trigger modal -->
   <h1>
-    <%= link_to "Check Balance", transaction_balance_path() %>
-  </h1>     
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
+  </h1>
+    
 
   <h1>
     <%= link_to "Deposit", transaction_deposit_path() %>
@@ -27,3 +32,26 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your current balance: </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1>
+          <%= current_user.account.card.amount %>F
+        </h1>
+      </div>
+      <h5>Date :<%= Time.now %></h5>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- button type="button" class="btn btn-primary">Save changes</button -->
+      </div>
+    </div>
+  </div>
+</div>
