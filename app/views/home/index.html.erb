@@ -39,7 +39,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <% if user_signed_in? && current_user.account %>
+        <% if user_signed_in? && current_user.account && current_user.account.card %>
           <h1>
             <%= current_user.account.card.amount %>F
           </h1>
