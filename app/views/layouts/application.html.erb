@@ -65,8 +65,19 @@
 
   <body class="">
     <%= render "shared/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong><p class="notice"><%= notice %></p></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+    
+    <% if alert %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><p class="alert"><%= alert %><%= link_to "Click Here To Sign In", user_session_path %></p></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
     <%= yield %>
     <%= render "shared/footer" %>
   </body>
