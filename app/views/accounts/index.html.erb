@@ -1,22 +1,32 @@
-<% if user_signed_in? && !current_user.account %>
+<% if user_signed_in? && @account.empty? %>
   <div class="alert alert-success mt-5" role="alert">
     <%= "You should Have and An Bank Account and Generated A Bank Card. " %><%= link_to "Create An Account", new_account_path, class:"alert-link" %>
   </div>
+  
 
 <% else %>
 <% end %>
 
 <p style="color: green"><%= notice %></p>
 
-<h1>Accounts</h1>
+<% if @account.empty? %>
+<div class="container mb-5">
+  <h1>
+    <%= link_to "New account", new_account_path, class:"fs-1 btn btn-primary" %>
+  </h1>
+</div>  
+<% else %>
+  <div class="container mt-5 mb-5">
+    <%= render @account %>
+  </div>
+<% end %>
 
+<!--h1>Accounts</h1>
 <div id="accounts">
-  <% @accounts.each do |account| %>
-    <%= render account %>
+  <%# @accounts.each do |account| %>
+    <%#= render account %>
     <p>
-      <%= link_to "Show this account", account %>
+      <%#= link_to "Show this account", account %>
     </p>
-  <% end %>
-</div>
-
-<%= link_to "New account", new_account_path %>
+  <%# end %>
+</div -->
