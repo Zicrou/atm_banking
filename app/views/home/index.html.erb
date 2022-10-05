@@ -1,4 +1,5 @@
 <div class="">
+  
   <div class="container box">
     <div class="balance">
       <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -7,14 +8,22 @@
     </div>
     <div class="deposit">
       <h1 style="font-size: 3vw;">
-        <%= link_to "Deposit", transaction_deposit_path(), class:"btn", style:"font-size:3vw" %>
+        <% if user_signed_in? && current_user.account  && current_user.account.card != nil %>
+          <%= link_to "Deposit", transaction_deposit_path(), class:"btn", style:"font-size:3vw" %>
+        <% else %>
+          <%= link_to "Deposit", accounts_path(), class:"btn", style:"font-size:3vw" %>
+        <% end %>
       </h1>
     </div>
 
     <div class="withdraw">
       <h1 style="font-size: 3vw;">
-        <%= link_to "Withdraw", transaction_withdraw_path(), class:"btn", style:"font-size:3vw" %>
-      </h1>
+        <% if user_signed_in? && current_user.account  && current_user.account.card != nil %>
+          <%= link_to "Withdraw", transaction_withdraw_path(), class:"btn", style:"font-size:3vw" %>
+        <% else %>
+          <%= link_to "Withdraw", accounts_path(), class:"btn", style:"font-size:3vw" %>
+        <% end %>
+        </h1>
     </div>
   </div>
 </div>
@@ -30,14 +39,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h1>
-          <%= current_user.account.card.amount if user_signed_in? && current_user.account %>F
-        </h1>
+        <% if user_signed_in? && current_user.account %>
+          <h1>
+            <%= current_user.account.card.amount %>F
+          </h1>
+        <% else %>
+          <h1>
+            <p>You don't have a back account.<%= link_to "Click here to create an account", accounts_path, class:"btn btn-warning" %></p>
+          </h1>
+        <% end %>
       </div>
       <h5>Date :<%= Time.now %></h5>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- button type="button" class="btn btn-primary">Save changes</button -->
       </div>
     </div>
   </div>

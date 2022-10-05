@@ -1,3 +1,11 @@
+<% if user_signed_in? && !current_user.account %>
+  <div class="alert alert-success mt-5" role="alert">
+    <%= "You should Have and An Bank Account and Generated A Bank Card. " %><%= link_to "Create An Account", new_account_path, class:"alert-link" %>
+  </div>
+
+<% else %>
+<% end %>
+
 <p style="color: green"><%= notice %></p>
 
 <h1>Accounts</h1>
