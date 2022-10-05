@@ -32,13 +32,18 @@
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
         <span class="fs-4">Zicrou's Bank</span>
       </a>
-
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <% if user_signed_in? %>
+          <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><%= link_to "Account", accounts_path(), class:"nav-link" %></li>
+          <li class="nav-item"><%= link_to "Deposit", transaction_deposit_path(), class:"nav-link" %></li>
+          <li class="nav-item"><%= link_to "Withdraw", transaction_withdraw_path(), class:"nav-link" %></li>
+          <li class="nav-item"><%= link_to "Log Out", destroy_user_session_path,method: :delete, class:"nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><%= link_to "Sign In", user_session_path, class:"nav-link" %></li>
+          <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class:"nav-link" %></li>
+        <% end %>
       </ul>
     </header>
   </div>
