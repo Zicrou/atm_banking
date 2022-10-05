@@ -71,6 +71,11 @@
   outline: 0;
 }
 
+.underline-nav:hover{
+  border-bottom: 1px solid blue;
+  border-bottom-right-radius: 1px solid blue;
+  border-bottom-left-radius: 1px solid blue;
+}
 
 /*************************************/
 /*** CSS FOR HEADER ***/
