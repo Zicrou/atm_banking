@@ -1,6 +1,8 @@
 <% if user_signed_in? && @account.empty? %>
   <div class="alert alert-success mt-5" role="alert">
-    <%= "You should Have and An Bank Account and Generated A Bank Card. " %><%= link_to "Create An Account", new_account_path, class:"alert-link" %>
+    <h1 class="fs-1">
+      <%= "You should Have and An Bank Account and Generated A Bank Card. " %><%= link_to "Create An Account", new_account_path, class:"alert-link" %>
+    </h1>
   </div>
   
 

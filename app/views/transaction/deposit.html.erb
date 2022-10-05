@@ -1,7 +1,7 @@
 <h1>Deposit Transaction</h1>
 
-<h1>New Balance : <%= current_user.account.card.amount if current_user.account %>F</h1>
 
+<h1>New Balance : <%= current_user.account.card.amount %>F</h1>
 <!-- /////// DISPLAY DEPOSIT AMOUNT FORM -->
 <%= form_with(model: Transaction, url: transaction_deposit_path()) do |form| %>
   <div class="form-group col-md-4">
@@ -12,6 +12,6 @@
   <div class="form-group col-md-4">
     <%= form.submit "Validate", class:"btn btn-warning form-control" %>
   </div>
-<% end %>
-
-<!-- /////// END DISPLAY DEPOSIT AMOUNT FORM -->
+  <% end %>
+  
+  <!-- /////// END DISPLAY DEPOSIT AMOUNT FORM -->
