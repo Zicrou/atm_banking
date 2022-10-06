@@ -19,10 +19,13 @@
     <h1>Accounts</h1>
       <div id="accounts">
         <% @accounts.each do |account| %>
-          <%= render account %>
-          <p>
-            <%= link_to "Show this account", account %>
-          </p>
+          <div class="account">
+            <%= render account %>
+          </div>
+          <!--p>
+            <%#= link_to "Show this account", account %>
+          </p -->
+          
         <% end %>
       </div>
   </div>

@@ -1,40 +1,59 @@
-<div id="<%= dom_id account %>">
-  <p>
-    <strong>Current User:</strong>
-    <%= current_user.id  %> " | |" <%= current_user.email  %>
-  </p>
-  <p>
-    <strong>Name:</strong>
-    <%= account.name %>
-  </p>
+<div id="<%= dom_id account %>" class="flex">
+  <div class="item">    
+    <p>
+      <strong>Current User:</strong>
+      <%= current_user.id  %> " | |" <%= current_user.email  %>
+    </p>
+    <spans>
+      <%= link_to "Show this account", account, class:"btn btn-outline-warning" %>
+    </spans>
+  </div>
 
-  <p>
-    <strong>Phone number:</strong>
-    <%= account.phone_number %>
-  </p>
+  <div class="item">
+    <p>
+      <strong>Name:</strong>
+      <%= account.name %>
+    </p>
+  
+    <p>
+      <strong>Phone number:</strong>
+      <%= account.phone_number %>
+    </p>
+  </div>
 
-  <p>
-    <strong>Date of birth:</strong>
-    <%= account.date_of_birth %>
-  </p>
-
-  <p>
-    <strong>Sexe:</strong>
-    <%= account.sexe %>
-  </p>
-
-  <p>
-    <strong>Profession:</strong>
-    <%= account.profession %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= account.address %>
-  </p>
+  <div class="item">
+    <p>
+      <strong>Date of birth:</strong>
+      <%= account.date_of_birth %>
+    </p>
+    
+    <p>
+      <strong>Sexe:</strong>
+      <%= account.sexe %>
+    </p>
+  </div>
+  
+  <div class="item">
+    <p>
+      <strong>Profession:</strong>
+      <%= account.profession %>
+    </p>
+    
+    <p>
+      <strong>Address:</strong>
+      <%= account.address %>
+    </p>
+  </div>
 
   <p>
     <strong>User Owner:</strong>
     <%= account.user_id %>
   </p>
+
+  <!--div class="ball_wrap">
+    <div class="blue_ball"><%#= link_to "Show ", account %></div>
+    <div class="green_ball"><%#= account.name %></div>
+    <div class="green_ball"><%#= account.profession %></div>
+    <div class="green_ball"><%#= account.phone_number %></div>
+  </div -->
 </div>
