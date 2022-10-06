@@ -28,6 +28,8 @@ class AccountsController < ApplicationController
   # POST /accounts or /accounts.json
   def create
     @account = Account.new(account_params)
+    @account.status = "pending"
+    @account.user_id = current_user.id
 
     respond_to do |format|
       if @account.save
@@ -64,30 +66,33 @@ class AccountsController < ApplicationController
   end
 
   def generate_bank_card
-    @account = params[:account_id].to_i
-    @card = Card.new
-    @card.account_id = @account
-    @card.expiration_date = Time.now + 4.year
-    @card.card_number = SecureRandom.alphanumeric(8)
-    @card.card_type = "debit"
-    @card.amount = 1234567890987654
-    
-    
-    if current_user.account.card.nil?
-      puts "NO CARD"
-      respond_to do |format|
-        if @card.save
-          puts "Success"
-          format.html { redirect_to account_url(@account), notice: "Card was successfully Generated." }
-          format.json { render :show, status: :created, location: @account }
-        else
-          puts "Failed"
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @account.errors, status: :unprocessable_entity }
-        end
-      end
+    if !current_user.account.status.pending
+      redirect_to account_url(@account), notice: "Your Account Need To Be Activated By One Our Admin."
     else
-        puts "HAVE CARD"
+      @account = params[:account_id].to_i
+      @card = Card.new
+      @card.account_id = @account
+      @card.expiration_date = Time.now + 4.year
+      @card.card_number = SecureRandom.alphanumeric(8)
+      @card.card_type = "debit"
+      @card.amount = 1234567890987654
+      
+      if current_user.account.card.nil?
+        puts "NO CARD"
+        respond_to do |format|
+          if @card.save
+            puts "Success"
+            format.html { redirect_to account_url(@account), notice: "Card was successfully Generated." }
+            format.json { render :show, status: :created, location: @account }
+          else
+            puts "Failed"
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @account.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+          puts "HAVE CARD"
+      end
     end
     
 

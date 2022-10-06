@@ -1,17 +1,21 @@
 <p style="color: green"><%= notice %></p>
-<%#= form_with(model: Account, url: generate_bank_card_account_path(account_id: @account)) do |form| %>
+<%= current_user.account.status != "disabled" %>
 
 <div class="container">
   <div class="row">
-    <div style="width:35%;border-right:1px solid black;">
+    <div style="width:100%;border-right:1px solid black;">
       <%= render @account %>
-
+      <br>
+      <hr>
       <div>
-        <%= link_to "Edit this account", edit_account_path(@account) %> |
-        <%= link_to "Back to accounts", accounts_path %> 
-
-
-        <%= button_to "Destroy this account", @account, method: :delete, class:"btn btn-danger" %>
+        <%= link_to "Edit this account", edit_account_path(@account), class:"btn btn-outline-secondary" %> |
+        <%= link_to "Back to accounts", accounts_path, class:"btn btn-info" %> 
+        <br>
+        <hr>
+        **********************
+        <p>
+          <%= button_to "Destroy this account", @account, method: :delete, class:"btn btn-danger" %>
+        </p>
       </div>
       **********************
     </div>
