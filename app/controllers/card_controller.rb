@@ -9,7 +9,7 @@ class CardController < ApplicationController
     @card.expiration_date = Time.now + 4.year
     @card.card_number = SecureRandom.alphanumeric(8)
     @card.card_type = "debit"
-    @card.amount = 1234567890987654
+    @card.amount = 1234567890987654.00
 
     respond_to do |format|
       if current_user.account.card.nil?
