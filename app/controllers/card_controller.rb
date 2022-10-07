@@ -3,7 +3,11 @@ class CardController < ApplicationController
   before_action :set_account, only: %i[update_amount]
   
   def save
-    if !current_user.account.status == "pending" || current_user.account.status != "disabled"
+    if current_user.account.status == "pending" || current_user.account.status == "disabled"
+      #debugger
+      @account = params["account_id"].to_i
+      redirect_to account_path(@account), alert: "Your Account Need To Be Activated By One Of Our Admin."
+    else
       @account = params[:account_id].to_i
       @card = Card.new
       @card.account_id = @account
@@ -30,10 +34,6 @@ class CardController < ApplicationController
           format.json { render :show, notice: "You already have a bank card.", location: @account }
         end 
       end
-    else
-      #debugger
-      @account = params["account_id"].to_i
-      redirect_to account_path(@account), alert: "Your Account Need To Be Activated By One Of Our Admin."
     end
   end
   
